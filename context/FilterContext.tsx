@@ -1,5 +1,5 @@
 "use client";
-import { getFilters } from "@/actions/category";
+import { getCategories } from "@/actions/category";
 import { getPriceRanges } from "@/actions/price-range";
 import { DeliveryTime, Category, PriceRange } from "@/types";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -127,7 +127,7 @@ export const FilterContextProvider = ({
   };
 
   useEffect(() => {
-    getFilters().then((res) => {
+    getCategories().then((res) => {
       setCategories(res.filters);
     });
     getPriceRanges().then((res) => {
