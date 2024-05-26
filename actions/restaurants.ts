@@ -1,6 +1,6 @@
 "use server";
 
-import { Restaurant, RestaurantResponse } from "@/types";
+import { APIError, Restaurant, RestaurantResponse } from "@/types";
 import doFetch from "./fetch";
 
 export async function getRestaurants() {
@@ -8,5 +8,5 @@ export async function getRestaurants() {
 }
 
 export async function getRestaurantDetail(id: string) {
-  return doFetch<Restaurant>(`restaurants/${id}`);
+  return doFetch<Restaurant | APIError>(`restaurants/${id}`);
 }
