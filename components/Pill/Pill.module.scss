@@ -1,12 +1,14 @@
+@use "sizes" as *;
+
 .wrapper {
   border: 0.6px solid var(--stroke);
   border-radius: 999px;
   background: var(--white);
-  padding: 8px 12px;
+  padding: $s2 $s3;
 
   & p {
     display: flex;
-    gap: 8px;
+    gap: $s2;
     flex-wrap: nowrap;
     align-items: center;
     white-space: nowrap;
@@ -16,8 +18,8 @@
 .indicator {
   display: inline-block;
   border-radius: 999px;
-  width: 8px;
-  height: 8px;
+  width: $s2;
+  height: $s2;
   background: var(--black);
 }
 

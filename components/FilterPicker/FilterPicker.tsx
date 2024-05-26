@@ -21,7 +21,7 @@ export default function FilterPicker() {
   return (
     <div className={styles.wrapper}>
       <h2 className="fs-h1">Filter</h2>
-      <BadgeGroup title="FOOD CATEGORY">
+      <BadgeGroup className={styles.category} title="FOOD CATEGORY">
         {categories.map((category) => (
           <Badge
             key={category.id}

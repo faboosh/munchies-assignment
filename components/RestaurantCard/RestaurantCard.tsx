@@ -38,7 +38,9 @@ export default function RestaurantCard({
       </div>
       <div className={styles.bottombar}>
         <h3 className="fs-h1">{restaurant.name}</h3>
-        <button className={styles.cta_button}>→</button>
+        <button className={styles.cta_button}>
+          <Image alt="arrow" src="icons/arrow.svg" width={12} height={10} />
+        </button>
       </div>
     </div>
   );

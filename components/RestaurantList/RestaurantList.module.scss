@@ -1,9 +1,10 @@
 @use "breakpoints" as *;
+@use "sizes" as *;
 
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 17px;
+  gap: $s4;
 
   @include size('xl') {
     grid-template-columns: 1fr 1fr;

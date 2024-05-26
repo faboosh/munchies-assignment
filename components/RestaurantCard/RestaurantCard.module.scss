@@ -1,31 +1,32 @@
-$offset: 16px;
+@use "sizes" as *;
 
 .wrapper {
-  padding: $offset;
-  border: 0.6px solid var(--stroke);
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: $s4;
+  border: 0.6px solid var(--stroke);
   background: var(--white);
   box-shadow: var(--shadow);
-  border-radius: 8px;
+  border-radius: $s2;
   min-height: 200px;
 }
 
 .topbar {
-  margin-top: -$offset;
-  margin-right: -$offset;
+  margin-top: -$s4;
+  margin-right: -$s4;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
 }
 
 .topbar__pills {
-  margin-top: $offset;
-  margin-right: $offset;
+  margin-top: $s4;
+  margin-right: $s4;
   display: flex;
   align-items: flex-start;
-  gap: 4px;
+  gap: $s1;
 }
 
 .bottombar {
@@ -38,15 +39,20 @@ $offset: 16px;
   }
 }
 
+.overlay {
+  
+}
+
 .image {
-  margin-top: -32px;
-  margin-right: -32px;
+  margin-top: -$s6;
+  margin-right: -$s6;
 }
 
 .cta_button {
+  border: none;
   background: var(--green);
-  height: 32px;
-  width: 32px;
+  height: $s6;
+  width: $s6;
   border-radius: 9999px;
 }
 

@@ -1,13 +1,20 @@
+@use "sizes" as *;
+@use "breakpoints" as *;
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: $s4;
+
+  @include size('md') {
+    gap: $s2;
+  }
 }
 
 .inner {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: $s2;
 }
 
 .wrapper h3 {

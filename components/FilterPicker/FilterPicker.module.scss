@@ -1,8 +1,30 @@
+@use "breakpoints" as *;
+@use "sizes" as *;
+
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding: 24px;
+  gap: $s6;
+  padding: $s5;
   background: var(--white);
   box-shadow: var(--shadow);
+  border: 0.6px solid var(--stroke);
+  border-radius: 10px;
+
+  @include size('md') {
+    box-shadow: unset;
+    padding: unset;
+    border: unset;
+    gap: $s4;
+
+    & h2 {
+      display: none;
+    }
+  }
+}
+
+.category {
+  @include size('md') {
+    display: none !important;
+  }
 }
