@@ -61,7 +61,7 @@ export const RestaurantContextProvider = ({
 
     // AND filtering, ie within some selected category
     return selectedCategoryIds.some((categoryId) =>
-      restaurant.filterIds.includes(categoryId)
+      restaurant.filter_ids.includes(categoryId)
     );
   };
 

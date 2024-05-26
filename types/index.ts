@@ -17,7 +17,7 @@ export type Restaurant = {
   id: string;
   name: string;
   rating: number;
-  filterIds: string[];
+  filter_ids: string[]; // incorrectly called filterIds in schema, actual response contains filter_ids
   image_url: string;
   delivery_time_minutes: number;
   price_range_id: string; // undocumented in API schema
@@ -37,7 +37,15 @@ export type PriceRange = {
   range: string;
 };
 
+export enum DeliveryTimeEnum {
+  ZeroToTen,
+  TenToThirty,
+  ThirtyToSixty,
+  OneHourOrMore,
+}
+
 export type DeliveryTime = {
+  id: DeliveryTimeEnum;
   min: number;
   max: number;
   text: string;
