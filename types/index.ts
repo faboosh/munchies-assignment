@@ -28,7 +28,7 @@ export type RestaurantResponse = {
 
 export type OpenStatus = {
   restaurant_id: string;
-  is_currently_open: boolean;
+  is_open: boolean;
 };
 
 export type PriceRange = {
