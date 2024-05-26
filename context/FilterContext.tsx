@@ -1,7 +1,7 @@
 "use client";
-import { getFilters } from "@/actions/filter";
+import { getFilters } from "@/actions/category";
 import { getPriceRanges } from "@/actions/price-range";
-import { DeliveryTime, Filter, PriceRange } from "@/types";
+import { DeliveryTime, Category, PriceRange } from "@/types";
 import { createContext, useContext, useEffect, useState } from "react";
 
 export enum DeliveryTimeEnum {
@@ -35,11 +35,11 @@ const DeliveryTimes: Record<DeliveryTimeEnum, DeliveryTime> = {
 };
 
 export const FilterContext = createContext<{
-  filters: Filter[];
-  selectedFilters: Filter[];
-  filterIsSelected: (filter: Filter) => boolean;
-  removeFilter: (filter: Filter) => void;
-  selectFilter: (filter: Filter) => void;
+  categories: Category[];
+  selectedCategories: Category[];
+  categoryIsSelected: (category: Category) => boolean;
+  removeCategory: (category: Category) => void;
+  selectCategory: (category: Category) => void;
   deliveryTimes: Record<DeliveryTimeEnum, DeliveryTime>;
   selectedDeliveryTimes: DeliveryTimeEnum[];
   deliveryTimeIsSelected: (time: DeliveryTimeEnum) => boolean;
@@ -51,11 +51,11 @@ export const FilterContext = createContext<{
   removePriceRange: (priceRange: PriceRange) => void;
   selectPriceRange: (priceRange: PriceRange) => void;
 }>({
-  filters: [],
-  selectedFilters: [],
-  filterIsSelected: () => false,
-  removeFilter: () => {},
-  selectFilter: () => {},
+  categories: [],
+  selectedCategories: [],
+  categoryIsSelected: () => false,
+  removeCategory: () => {},
+  selectCategory: () => {},
   deliveryTimes: DeliveryTimes,
   selectedDeliveryTimes: [],
   deliveryTimeIsSelected: () => false,
@@ -73,8 +73,8 @@ export const FilterContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [filters, setFilters] = useState<Filter[]>([]);
-  const [selectedFilters, setSelectedFilters] = useState<Filter[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
   const [selectedDeliveryTimes, setSelectedDeliveryTimes] = useState<
     DeliveryTimeEnum[]
   >([]);
@@ -83,17 +83,19 @@ export const FilterContextProvider = ({
     []
   );
 
-  const filterIsSelected = (filter: Filter) =>
-    selectedFilters.some(({ id }) => id === filter.id);
+  const categoryIsSelected = (category: Category) =>
+    selectedCategories.some(({ id }) => id === category.id);
 
-  const selectFilter = (filter: Filter) => {
-    if (filterIsSelected(filter)) return;
+  const selectCategory = (category: Category) => {
+    if (categoryIsSelected(category)) return;
 
-    setSelectedFilters([...selectedFilters, filter]);
+    setSelectedCategories([...selectedCategories, category]);
   };
 
-  const removeFilter = (filter: Filter) => {
-    setSelectedFilters(selectedFilters.filter(({ id }) => id !== filter.id));
+  const removeCategory = (category: Category) => {
+    setSelectedCategories(
+      selectedCategories.filter(({ id }) => id !== category.id)
+    );
   };
 
   const deliveryTimeIsSelected = (time: DeliveryTimeEnum) =>
@@ -126,7 +128,7 @@ export const FilterContextProvider = ({
 
   useEffect(() => {
     getFilters().then((res) => {
-      setFilters(res.filters);
+      setCategories(res.filters);
     });
     getPriceRanges().then((res) => {
       setPriceRanges(res);
@@ -136,11 +138,11 @@ export const FilterContextProvider = ({
   return (
     <FilterContext.Provider
       value={{
-        filters,
-        selectedFilters,
-        filterIsSelected,
-        selectFilter,
-        removeFilter,
+        categories,
+        selectedCategories,
+        categoryIsSelected,
+        selectCategory,
+        removeCategory,
         deliveryTimes: DeliveryTimes,
         selectedDeliveryTimes,
         deliveryTimeIsSelected,

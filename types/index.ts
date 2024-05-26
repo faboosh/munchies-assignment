@@ -3,14 +3,14 @@ export type APIError = {
   reason: string;
 };
 
-export type Filter = {
+export type Category = {
   id: string;
   name: string;
   image_url: string;
 };
 
-export type FilterResponse = {
-  filters: Filter[];
+export type CategoryResponse = {
+  filters: Category[];
 };
 
 export type Restaurant = {
@@ -20,6 +20,7 @@ export type Restaurant = {
   filterIds: string[];
   image_url: string;
   delivery_time_minutes: number;
+  price_range_id: string; // undocumented in API schema
 };
 
 export type RestaurantResponse = {
