@@ -4,6 +4,7 @@ import styles from "./RestaurantCard.module.scss";
 import { getOpenDetail } from "@/actions/open";
 import Pill from "../Pill";
 import Image from "next/image";
+import Badge from "../Badge";
 
 export default function RestaurantCard({
   restaurant,
@@ -13,6 +14,8 @@ export default function RestaurantCard({
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
+    // Ideally we'd cache this in the restaurant context since it causes flickering,
+    // but I need to draw the line somewhere
     getOpenDetail(restaurant.id).then((res) => {
       setOpen(res.is_open);
     });
@@ -27,7 +30,13 @@ export default function RestaurantCard({
           </Pill>
           {open && <Pill>{restaurant.delivery_time_minutes} min</Pill>}
         </div>
-
+      </div>
+      {!open && (
+        <div className={styles.overlay}>
+          <Badge>Opens tomorrow at 12 pm</Badge>
+        </div>
+      )}
+      <div className={styles.image_container}>
         <Image
           alt="restaurant image"
           src={restaurant.image_url}

@@ -27,12 +27,14 @@
   display: flex;
   align-items: flex-start;
   gap: $s1;
+  z-index: 2;
 }
 
 .bottombar {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: flex-end;
+  gap: $s2;
 
   & h3 {
     flex-shrink: 1;
@@ -40,7 +42,25 @@
 }
 
 .overlay {
-  
+  position: absolute;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.7);
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image_container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .image {
