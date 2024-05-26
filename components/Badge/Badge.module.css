@@ -1,0 +1,20 @@
+.badge {
+  border: 0.6px solid var(--stroke);
+  border-radius: 8px;
+  background: var(--white);
+  padding: 8px 12px;
+}
+
+.selected {
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.small {
+  padding: 8px;
+}
