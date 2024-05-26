@@ -1,0 +1,21 @@
+$size-sm: 480px;
+$size-md: 820px;
+$size-lg: 1000px;
+$size-xl: 1200px;
+
+$breakpoints: (
+  'sm': $size-sm,
+  'md': $size-md,
+  'lg': $size-lg,
+  'xl': $size-xl,
+);
+
+@mixin size($size) {
+  @if map-has-key($breakpoints, $size) {
+    @media (max-width: map-get($breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @warn "No value is defined for `#{$size}` in `$breakpoints`.";
+  }
+}

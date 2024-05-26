@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Badge.module.css";
+import styles from "./Badge.module.scss";
 
 export default function Badge({
   children,

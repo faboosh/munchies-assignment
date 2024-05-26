@@ -1,0 +1,16 @@
+@use "breakpoints" as *;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 17px;
+
+  @include size('xl') {
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+  @include size('md') {
+    grid-template-columns: 1fr;
+  }
+}

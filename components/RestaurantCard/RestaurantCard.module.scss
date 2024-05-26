@@ -1,0 +1,52 @@
+$offset: 16px;
+
+.wrapper {
+  padding: $offset;
+  border: 0.6px solid var(--stroke);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  min-height: 200px;
+}
+
+.topbar {
+  margin-top: -$offset;
+  margin-right: -$offset;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.topbar__pills {
+  margin-top: $offset;
+  margin-right: $offset;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.bottombar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-end;
+
+  & h3 {
+    flex-shrink: 1;
+  }
+}
+
+.image {
+  margin-top: -32px;
+  margin-right: -32px;
+}
+
+.cta_button {
+  background: var(--green);
+  height: 32px;
+  width: 32px;
+  border-radius: 9999px;
+}
+

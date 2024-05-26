@@ -1,7 +1,7 @@
 "use client";
 import { useFilterContext } from "@/context/FilterContext";
 import React from "react";
-import styles from "./FilterPicker.module.css";
+import styles from "./FilterPicker.module.scss";
 import BadgeGroup from "../BadgeGroup";
 import Badge from "../Badge";
 

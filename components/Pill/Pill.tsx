@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Pill.module.css";
+import styles from "./Pill.module.scss";
 
-export default function Badge({
+export default function Pill({
   children,
   active,
   indicator,
@@ -14,8 +14,10 @@ export default function Badge({
     <div className={`${styles.wrapper} ${active ? styles.active : ""}`}>
       <p className="fs-body">
         {indicator && (
-          <div
-            className={`${styles.indicator} ${active ? styles.active : ""}`}
+          <span
+            className={`${styles.indicator} ${
+              active ? styles.indicator__active : ""
+            }`}
           />
         )}
         {children}

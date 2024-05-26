@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./BadgeGroup.module.css";
+import styles from "./BadgeGroup.module.scss";
 
 export default function BadgeGroup({
   children,

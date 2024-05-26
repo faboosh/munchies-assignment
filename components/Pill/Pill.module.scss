@@ -3,27 +3,18 @@
   border-radius: 999px;
   background: var(--white);
   padding: 8px 12px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  gap: 8px;
-}
 
-.selected {
-  background: var(--green);
-  color: var(--white);
-  border-color: var(--green);
-}
-
-.clickable {
-  cursor: pointer;
-}
-
-.small {
-  padding: 8px;
+  & p {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    align-items: center;
+    white-space: nowrap;
+  }
 }
 
 .indicator {
+  display: inline-block;
   border-radius: 999px;
   width: 8px;
   height: 8px;
