@@ -23,7 +23,7 @@
   }
 }
 
-.category {
+.category, .price_range {
   @include size('md') {
     display: none !important;
   }

@@ -43,7 +43,7 @@ export default function FilterPicker() {
           </Badge>
         ))}
       </BadgeGroup>
-      <BadgeGroup title="PRICE RANGE">
+      <BadgeGroup className={styles.price_range} title="PRICE RANGE">
         {priceRanges.map((priceRange) => (
           <Badge
             small
