@@ -1,0 +1,31 @@
+@use "sizes" as *;
+
+.wrapper {
+  min-width: 160px;
+  min-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  border: 0.6px solid var(--stroke);
+  border-radius: $s2;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  user-select: none;
+  cursor: pointer;
+}
+
+.text_wrapper {
+  padding-top: $s4;
+  padding-left: $s3;
+}
+
+.active {
+  background: var(--green);
+  color: var(--white);
+}
+
+.image {
+  height: 80px;
+  width: 80px;
+  margin-right: -$s3
+}
