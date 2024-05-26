@@ -1,33 +1,30 @@
 "use client";
 import { getCategories } from "@/actions/category";
 import { getPriceRanges } from "@/actions/price-range";
-import { DeliveryTime, Category, PriceRange } from "@/types";
+import { DeliveryTime, Category, PriceRange, DeliveryTimeEnum } from "@/types";
 import { createContext, useContext, useEffect, useState } from "react";
-
-export enum DeliveryTimeEnum {
-  ZeroToTen,
-  TenToThirty,
-  ThirtyToSixty,
-  OneHourOrMore,
-}
 
 const DeliveryTimes: Record<DeliveryTimeEnum, DeliveryTime> = {
   [DeliveryTimeEnum.ZeroToTen]: {
+    id: DeliveryTimeEnum.ZeroToTen,
     min: 0,
     max: 10,
     text: "0-10 min",
   },
   [DeliveryTimeEnum.TenToThirty]: {
+    id: DeliveryTimeEnum.TenToThirty,
     min: 10,
     max: 30,
     text: "10-30 min",
   },
   [DeliveryTimeEnum.ThirtyToSixty]: {
+    id: DeliveryTimeEnum.ThirtyToSixty,
     min: 30,
     max: 60,
     text: "30-60 min",
   },
   [DeliveryTimeEnum.OneHourOrMore]: {
+    id: DeliveryTimeEnum.OneHourOrMore,
     min: 60,
     max: Infinity,
     text: "1 hour+",
@@ -40,32 +37,39 @@ export const FilterContext = createContext<{
   categoryIsSelected: (category: Category) => boolean;
   removeCategory: (category: Category) => void;
   selectCategory: (category: Category) => void;
+  toggleCategory: (category: Category) => void;
+
   deliveryTimes: Record<DeliveryTimeEnum, DeliveryTime>;
   selectedDeliveryTimes: DeliveryTimeEnum[];
   deliveryTimeIsSelected: (time: DeliveryTimeEnum) => boolean;
   removeDeliveryTime: (time: DeliveryTimeEnum) => void;
   selectDeliveryTime: (time: DeliveryTimeEnum) => void;
+  toggleDeliveryTime: (time: DeliveryTimeEnum) => void;
   priceRanges: PriceRange[];
   selectedPriceRanges: PriceRange[];
   priceRangeIsSelected: (priceRange: PriceRange) => boolean;
   removePriceRange: (priceRange: PriceRange) => void;
   selectPriceRange: (priceRange: PriceRange) => void;
+  togglePriceRange: (priceRange: PriceRange) => void;
 }>({
   categories: [],
   selectedCategories: [],
   categoryIsSelected: () => false,
   removeCategory: () => {},
   selectCategory: () => {},
+  toggleCategory: () => {},
   deliveryTimes: DeliveryTimes,
   selectedDeliveryTimes: [],
   deliveryTimeIsSelected: () => false,
   removeDeliveryTime: () => {},
   selectDeliveryTime: () => {},
+  toggleDeliveryTime: () => {},
   priceRanges: [],
   selectedPriceRanges: [],
   priceRangeIsSelected: () => false,
   removePriceRange: () => {},
   selectPriceRange: () => {},
+  togglePriceRange: () => {},
 });
 
 export const FilterContextProvider = ({
@@ -98,6 +102,14 @@ export const FilterContextProvider = ({
     );
   };
 
+  const toggleCategory = (category: Category) => {
+    if (categoryIsSelected(category)) {
+      removeCategory(category);
+    } else {
+      selectCategory(category);
+    }
+  };
+
   const deliveryTimeIsSelected = (time: DeliveryTimeEnum) =>
     selectedDeliveryTimes.includes(time);
 
@@ -112,6 +124,14 @@ export const FilterContextProvider = ({
     );
   };
 
+  const toggleDeliveryTime = (time: DeliveryTimeEnum) => {
+    if (deliveryTimeIsSelected(time)) {
+      removeDeliveryTime(time);
+    } else {
+      selectDeliveryTime(time);
+    }
+  };
+
   const priceRangeIsSelected = (priceRange: PriceRange) =>
     selectedPriceRanges.some(({ id }) => id === priceRange.id);
 
@@ -124,6 +144,14 @@ export const FilterContextProvider = ({
     setSelectedPriceRanges(
       selectedPriceRanges.filter(({ id }) => id !== priceRange.id)
     );
+  };
+
+  const togglePriceRange = (priceRange: PriceRange) => {
+    if (priceRangeIsSelected(priceRange)) {
+      removePriceRange(priceRange);
+    } else {
+      selectPriceRange(priceRange);
+    }
   };
 
   useEffect(() => {
@@ -143,16 +171,19 @@ export const FilterContextProvider = ({
         categoryIsSelected,
         selectCategory,
         removeCategory,
+        toggleCategory,
         deliveryTimes: DeliveryTimes,
         selectedDeliveryTimes,
         deliveryTimeIsSelected,
         selectDeliveryTime,
         removeDeliveryTime,
+        toggleDeliveryTime,
         priceRanges,
         selectedPriceRanges,
         priceRangeIsSelected,
         selectPriceRange,
         removePriceRange,
+        togglePriceRange,
       }}
     >
       {children}
