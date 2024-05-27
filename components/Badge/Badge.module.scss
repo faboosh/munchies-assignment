@@ -5,6 +5,7 @@
   border-radius: $s2;
   background: var(--white);
   padding: $s2 $s3;
+  user-select: none;
 }
 
 .selected {
